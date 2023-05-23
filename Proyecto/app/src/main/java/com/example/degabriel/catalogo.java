@@ -13,9 +13,9 @@ public class catalogo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_catalogo);
 
-        catalogoMenu =findViewById(R.id.carritoMenu);
-        catalogCart =findViewById(R.id.carritoCart);
-        catalogUser =findViewById(R.id.carritoUser);
+        catalogoMenu =findViewById(R.id.catalogoMenu);
+        catalogCart =findViewById(R.id.catalogoCart);
+        catalogUser =findViewById(R.id.catalogoPerfil);
 
         catalogoMenu.setOnClickListener(view -> {
             Intent intent = new Intent(catalogo.this, menu.class);
