@@ -150,7 +150,7 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/imageView15"
+            android:id="@+id/perfilMenu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -158,7 +158,7 @@
             app:srcCompat="@drawable/menu" />
 
         <ImageView
-            android:id="@+id/imageView16"
+            android:id="@+id/perfilCart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -180,7 +180,7 @@
             </FrameLayout>
 
             <ImageView
-                android:id="@+id/imageView17"
+                android:id="@+id/perfilPerfil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

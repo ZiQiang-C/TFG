@@ -90,11 +90,13 @@
             android:text="Registrarse" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/regIniciar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:gravity="end"
+            android:clickable="true"
+            android:onClick="textViewClicked"
             android:text="Iniciar Sesión"
             android:textColor="#000000" />
 
