@@ -19,11 +19,11 @@ public class welcomeActivity extends AppCompatActivity {
     private ImageView imageView;
     private int[] imageResources = {R.drawable.finaldune1, R.drawable.f2, R.drawable.f3};
     private int currentImageIndex = 0;
-    private int time_sleepfirst=1000;
-    private int time_sleepAll=3000;
+    private int time_sleepfirst=0;
+    private int time_sleepAll=2000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_carga_app);

@@ -1,45 +1,116 @@
 package com.example.degabriel;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.material.snackbar.Snackbar;
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
-    private TextView registra;
-    private EditText correo,contrasena;
-    private Button iniciar;
-    @Override
+    private FirebaseAuth mAuth;
+    private ActivityResultLauncher<Intent> launcher;
+    EditText loginCorreo, loginPassword;
+    CheckBox mantenerSesion;
+    Button botonLogin;
+    TextView registro;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-
-        correo=findViewById(R.id.loginCorreo);
-        contrasena=findViewById(R.id.loginContra);
-        iniciar=findViewById(R.id.loginBt);
-        registra=findViewById(R.id.loginRegistrarse);
-
-        // cuando el correo y contrasena que hay cambia pagina
-
-        iniciar.setOnClickListener(view -> {
-            if(correo.getText().length()>0 && contrasena.getText().length()>0){
-                Intent intent = new Intent(MainActivity.this, menu.class);
-                startActivity(intent);
-                finish();
-            }else{
-                Toast.makeText(getApplicationContext(), "error correo o contrasena", Toast.LENGTH_SHORT).show();
+        asignarElementos();
+        FirebaseApp.initializeApp(this);
+        botonLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               // comprobarDatos();
+                irAPrincipal();
             }
         });
-
-        registra.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, registro.class);
-            startActivity(intent);
+        registro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                irARegistro();
+            }
         });
+        launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult result) {
+                        // Aquí puedes manejar el resultado de la actividad
+                        if (result.getResultCode() == Activity.RESULT_OK) {
+                            // El resultado fue exitoso
+                            // Realiza las acciones necesarias
+                            Intent data = result.getData();
+                            // Manejar los datos devueltos por la actividad
+                        } else {
+                            // El resultado no fue exitoso o fue cancelado
+                            // Realiza las acciones necesarias
+                        }
+                    }
+                });
     }
+    public void asignarElementos(){
+        loginCorreo = findViewById(R.id.loginCorreo);
+        loginPassword = findViewById(R.id.loginContra);
+
+        botonLogin = findViewById(R.id.loginBt);
+        registro = findViewById(R.id.loginRegistrarse);
+    }
+    public void comprobarDatos(){
+        String email, pass;
+        email=loginCorreo.getText().toString();
+        pass=loginPassword.getText().toString();
+        if (email.length()<1||pass.length()<1){
+            Toast.makeText(this, "Hay campos vacíos", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            Iniciar(email, pass);
+        }
+    }
+    public void Iniciar(String email, String pass){
+        mAuth=FirebaseAuth.getInstance();
+        mAuth.signInWithEmailAndPassword(email, pass)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Toast.makeText(MainActivity.this, "Log in correcto", Toast.LENGTH_SHORT).show();
+                            irAPrincipal();
+                            //FirebaseUser user = mAuth.getCurrentUser();
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Toast.makeText(MainActivity.this, "Las credenciales introducidas no coinciden", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
+    public void irARegistro(){
+        Intent intent = new Intent(this, registro.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
+    public void irAPrincipal(){
+        Intent intent = new Intent(this, menu.class);
+        launcher.launch(intent);
+        finish();
+    }
+
+
 }
