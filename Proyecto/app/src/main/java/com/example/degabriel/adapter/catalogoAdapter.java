@@ -18,7 +18,7 @@ import java.util.Map;
 
 public class catalogoAdapter extends RecyclerView.Adapter<catalogoAdapter.catalogoViewHolder> {
     private List<Map<String, Object>> data;
-    private onItemClickListener  mListener;
+    private onItemClickListener mListener;
     public catalogoAdapter(List<Map<String, Object>> data) {
         this.data = data;
     }

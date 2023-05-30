@@ -24,6 +24,8 @@ public class noticiasAdapter extends RecyclerView.Adapter<noticiasAdapter.notici
         this.data = data;
     }
 
+
+
     public void setOnItemClickListener(onItemClickListener listener) {
         this.mListener = listener;
     }

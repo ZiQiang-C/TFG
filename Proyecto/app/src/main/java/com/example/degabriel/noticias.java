@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class noticias extends AppCompatActivity implements catalogoAdapter.onItemClickListener{
+public class noticias extends AppCompatActivity implements noticiasAdapter.onItemClickListener{
     private List<String> documentId=new ArrayList<>();
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private ImageView noticiaMenu,noticiaCart,noticiaPerfil;
@@ -105,10 +105,10 @@ public class noticias extends AppCompatActivity implements catalogoAdapter.onIte
     @Override
     public void onItemClick(int position) {
         String HTTP=http.get(position);
-        Toast.makeText(this,""+HTTP,Toast.LENGTH_SHORT).show();
-        ir(HTTP);
+
+        envia(HTTP);
     }
-    public void ir (String http){
+    public void envia(String http){
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(http));
         startActivity(intent);
     }
