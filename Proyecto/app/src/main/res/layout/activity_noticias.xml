@@ -39,6 +39,7 @@
         android:layout_weight="1.5">
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/noticiasRcy"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="20dp"

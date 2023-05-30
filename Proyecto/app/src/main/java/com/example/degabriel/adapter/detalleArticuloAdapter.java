@@ -1,0 +1,59 @@
+package com.example.degabriel.adapter;
+
+import static android.content.ContentValues.TAG;
+
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
+import com.example.degabriel.R;
+
+import java.util.List;
+
+public class detalleArticuloAdapter extends RecyclerView.Adapter<detalleArticuloAdapter.detalleArticuloViewHolder>{
+    private List<String> data;
+    private catalogoAdapter.onItemClickListener mListener;
+
+    public detalleArticuloAdapter(List<String> imagenes) { this.data=imagenes;
+    }
+
+    @NonNull
+    @Override
+    public detalleArticuloViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.raw_detalle_articulo, parent, false);
+        return new detalleArticuloViewHolder(itemView);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull detalleArticuloAdapter.detalleArticuloViewHolder holder, int position) {
+        String item = data.get(position);
+        holder.bindData(item);
+    }
+
+    @Override
+    public int getItemCount() {
+        return data.size();
+    }
+
+    public class detalleArticuloViewHolder extends RecyclerView.ViewHolder {
+        private ImageView imageView;
+        public detalleArticuloViewHolder(@NonNull View itemView) {
+            super(itemView);
+
+            imageView=itemView.findViewById(R.id.rawDetalleArticuloImagen);
+        }
+
+        public void bindData(String imageUrl) {
+
+            Glide.with(itemView)
+                    .load(imageUrl)
+                    .into(imageView);
+        }
+    }
+}

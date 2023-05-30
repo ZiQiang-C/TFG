@@ -39,13 +39,6 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".expressionLista"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".expression"
             android:exported="false">
             <meta-data
@@ -53,21 +46,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".catalogoLista"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".catalogo"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".carritoLista"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

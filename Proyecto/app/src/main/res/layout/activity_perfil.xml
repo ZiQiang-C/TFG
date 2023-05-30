@@ -133,6 +133,15 @@
             android:textColor="#000000"
             android:textStyle="bold" />
 
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Cerrar Sesión"
+            android:textColor="#000000"
+            android:textStyle="bold" />
+
     </LinearLayout>
 
     <FrameLayout

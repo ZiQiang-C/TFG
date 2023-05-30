@@ -2,18 +2,16 @@ package com.example.degabriel;
 
 import static android.content.ContentValues.TAG;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.ImageView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.widget.AdapterView;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.degabriel.adapter.catalogoAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -50,7 +48,7 @@ public class catalogo extends AppCompatActivity implements catalogoAdapter.onIte
         adapter = new catalogoAdapter(dataList);
         recy.setAdapter(adapter);
 
-        adapter.setOnItemClickListener( this);
+        adapter.setOnItemClickListener(this);
         //obtenerCatalogo();
         readDataFromFirestore();
 

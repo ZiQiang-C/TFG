@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:background="#FFFFFF"
     android:orientation="vertical"
-    tools:context=".catalogoLista">
+    >
 
     <ImageView
         android:id="@+id/catalogoListaImage"
