@@ -18,10 +18,9 @@ import java.util.List;
 
 public class detalleArticuloAdapter extends RecyclerView.Adapter<detalleArticuloAdapter.detalleArticuloViewHolder>{
     private List<String> data;
-    private catalogoAdapter.onItemClickListener mListener;
+    private onItemClickListener mListener;
 
-    public detalleArticuloAdapter(List<String> imagenes) { this.data=imagenes;
-    }
+    public detalleArticuloAdapter(List<String> imagenes) { this.data=imagenes;}
 
     @NonNull
     @Override
@@ -55,5 +54,8 @@ public class detalleArticuloAdapter extends RecyclerView.Adapter<detalleArticulo
                     .load(imageUrl)
                     .into(imageView);
         }
+    }
+
+    public class onItemClickListener {
     }
 }

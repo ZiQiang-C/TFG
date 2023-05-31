@@ -55,6 +55,7 @@
             android:layout_weight="1">
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/expressionRecy1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="20dp"
@@ -64,6 +65,7 @@
                 android:layout_weight="1" />
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/expressionRcy2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
