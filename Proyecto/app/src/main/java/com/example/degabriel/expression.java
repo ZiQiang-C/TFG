@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class expression extends AppCompatActivity implements expressionAdapter.onItemClickListener{
+public class expression extends AppCompatActivity {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private expressionAdapter adapter1;
 
@@ -63,7 +63,7 @@ public class expression extends AppCompatActivity implements expressionAdapter.o
                 // 处理 RecyclerView1 的点击事件
                 http=Imagenes1.get(position);
                 envio(http);
-                Toast.makeText(expression.this, "bien"+http, Toast.LENGTH_SHORT).show();
+
             }
         });
         adapter2.setOnItemClickListener(new expressionAdapter.onItemClickListener() {
@@ -72,7 +72,7 @@ public class expression extends AppCompatActivity implements expressionAdapter.o
                 // 处理 RecyclerView1 的点击事件
                 http=Imagenes2.get(position);
                 envio(http);
-                Toast.makeText(expression.this, "bien"+http, Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -132,10 +132,7 @@ public class expression extends AppCompatActivity implements expressionAdapter.o
                 });
     }
 
-    @Override
-    public void onItemClick(int position) {
 
-    }
     public void envio(String ID) {
         Intent intent = new Intent(this, fotosArticulo.class);
         intent.putExtra("http",ID);
